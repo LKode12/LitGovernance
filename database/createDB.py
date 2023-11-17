@@ -1,15 +1,10 @@
 import sqlite3
 
-
 # Connect to database or create it if file is not there
-def connection():
-    connect = sqlite3.connect('company.db')
+connect = sqlite3.connect('company.db')
 
-    # Execute SQL statements and fetch results from SQL queries
-    return connect.cursor()
-
-
-cursor = connection()
+# Execute SQL statements and fetch results from SQL queries
+cursor = connect.cursor()
 
 # Create Purpose Table
 cursor.execute('''
@@ -64,4 +59,5 @@ cursor.execute('''
 );
 ''')
 
-
+connect.commit()
+connect.close()
