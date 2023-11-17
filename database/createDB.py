@@ -1,10 +1,15 @@
 import sqlite3
 
-# Connect to database or create it if file is not there
-connect = sqlite3.connect('company.db')
 
-# Execute SQL statements and fetch results from SQL queries
-cursor = connect.cursor()
+# Connect to database or create it if file is not there
+def connection():
+    connect = sqlite3.connect('company.db')
+
+    # Execute SQL statements and fetch results from SQL queries
+    return connect.cursor()
+
+
+cursor = connection()
 
 # Create Purpose Table
 cursor.execute('''
@@ -22,7 +27,6 @@ cursor.execute('''
     )
 ''')
 
-
 # Create Sustainability Table
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS Sustainability (
@@ -31,7 +35,6 @@ cursor.execute('''
     )
 ''')
 
-
 # Create Conformance Table
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS Conformance (
@@ -39,3 +42,26 @@ cursor.execute('''
         conformance_question TEXT
     )
 ''')
+
+# Create Directors Table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Directors (
+        director_id INTEGER PRIMARY KEY,
+        director_email TEXT
+    )
+''')
+
+
+# Create Responses Table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Responses (
+    response_id SERIAL PRIMARY KEY,
+    participant_id INT,
+    question_id INT,
+    responses_value INT CHECK (response_value BETWEEN 0 AND 4),
+    table_name VARCHAR(50), -- To store the name of the table (Purpose, Sustainability, etc.)
+    FOREIGN KEY (directors_id) REFERENCES Directors(directors_id)
+);
+''')
+
+
