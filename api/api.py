@@ -3,8 +3,8 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from flask import abort
-from database import createDB as cb
-from database import insertDb as ib
+# from database import createDB as cb
+# from database import insertDb as ib
 
 app = Flask(__name__)
 
@@ -77,6 +77,10 @@ def authenticateDirector():
     abort(401)
     return "Not Authorised"
 
+@app.route("/add_client", methods=["POST"])
+def addClientsInDB():
+
+    return "Successful"
 
 
 def addDataToDatabase(desirializedJson):
