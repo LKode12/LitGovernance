@@ -8,22 +8,22 @@ def main():
     # Add questions and choices
     email = st.text_input("Enter email")
     company_name = st.text_input("What comapany do yo work for?")
-    purpose_1 = st.radio("1.There is an up-to-date board charter in place approprate to the life-stage of the organisation and its current structure.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
+    purpose_1 = st.radio("1.There is an up-to-date board charter in place litGovernanceAPIroprate to the life-stage of the organisation and its current structure.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     purpose_2 = st.radio("2.There is an up-to-date delegation of authority policy in place, which is effectively monitored.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     purpose_3 = st.radio("3.The managing director's report effectively communicates status, identifies issues, and clearly indicates a linkage to the business plan.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     purpose_4 = st.radio("4.Board packs are structured and used effectively to guide the board to make decisions and hold those authorised to make decisions accountable.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     purpose_5 = st.radio("5.The board calendar is up-to-date and relevant for the timing requirements of the enterprise and its strategic focus.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
-    purpose_6 = st.radio("6.All board meeting dates (and committee dates if applicable) for the year are scheduled in directors' diaries and align with the board calendar.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
+    purpose_6 = st.radio("6.All board meeting dates (and committee dates if litGovernanceAPIlicable) for the year are scheduled in directors' diaries and align with the board calendar.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     purpose_7 = st.radio("7.The organisation has an up-to-date strategy (identifying the companies purpose and medium-term vision) and a business plan (identifying the necessary next steps) that guides its focus and direction.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     purpose_8 = st.radio("8.The board ensures a strategic focus in every board meeting to ensure that board papers relevant to the theme agreed upon for that meeting are prepared and that necessary key strategic issues are addressed proactively.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     purpose_9 = st.radio("9.There is clarity regarding the organisation's culture, values, and beliefs.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
-    purpose_10 = st.radio("10.The culture and values of the organisation are demonstrated by the board, setting the appropriate tone for the rest of the organisation to follow.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
+    purpose_10 = st.radio("10.The culture and values of the organisation are demonstrated by the board, setting the litGovernanceAPIropriate tone for the rest of the organisation to follow.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     purpose_11= st.radio("11.The board's conduct is characterised by trust, respect, candour, professionalism, accountability, diligence and commitment.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     purpose_12= st.radio("12.The organisation has developed a culture of accountability for performance.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     #There are going to be hidden
     comittee_structure = st.radio("13.The board has committee structures in place",["Yes","No"])
     if comittee_structure =="Yes":
-        purpose_13= st.radio("a.The board committees have approved terms of reference.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
+        purpose_13= st.radio("a.The board committees have litGovernanceAPIroved terms of reference.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
         purpose_14= st.radio("b.The board committees have an agreed work plan for the year and are making good progress against that plan.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     accountability_1= st.radio("14.The chairman and managing director meet before every board meeting, and this engagement delivers value to the board's focus and preparation, as well as enhancing the relationship between the board and management.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     accountability_2= st.radio("15.Independent directors meet before every board meeting and utilise this engagement to focus on value creation and enhance effective governance implementation.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
@@ -41,23 +41,23 @@ def main():
     accountability_14= st.radio("27.Directors are rotated every three years or as per the board charter.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     sustainability_1= st.radio("28.All relevant and strategic (material) internal and external stakeholders have been identified", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     sustainability_2= st.radio("29.Stakeholder requirements (needs, interests, and expectations) are regularly assessed and understood to ensure the delivery of long-term, sustainable benefits.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
-    sustainability_3= st.radio("30.There is a strategic approach to stakeholder engagement that ensures that the board and the rest of the organisation engage with stakeholders appropriately.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
+    sustainability_3= st.radio("30.There is a strategic litGovernanceAPIroach to stakeholder engagement that ensures that the board and the rest of the organisation engage with stakeholders litGovernanceAPIropriately.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     sustainability_4= st.radio("31.The organisation holds an annual general meeting every year.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     sustainability_5= st.radio("32.The annual general meeting is effective at formally engaging shareholders.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     sustainability_6= st.radio("33.The expectations of shareholders are understood, including both financial and non-financial outcomes, and the board manages these expectations so that they are more realistic where necessary.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     sustainability_7= st.radio("34.The value that the organisation seeks is sustainable over time and meets the needs and expectations of shareholders, stakeholders and interested parties alike.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     sustainability_8= st.radio("35.The audited annual financial statements are available for the previous year-end.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
-    sustainability_9= st.radio("36.The board has determined the organisation's risk appetite and tolerance levels across all dimensions of the organisation's operations and performance.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
-    sustainability_10= st.radio("37.A risk framework has been defined and implemented in line with this risk appetite and tolerance.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
+    sustainability_9= st.radio("36.The board has determined the organisation's risk litGovernanceAPIetite and tolerance levels across all dimensions of the organisation's operations and performance.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
+    sustainability_10= st.radio("37.A risk framework has been defined and implemented in line with this risk litGovernanceAPIetite and tolerance.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     sustainability_11= st.radio("38.This risk framework facilitates the regular examination of both the internal operations of the organisation and the external environment to identify risks and implement mitigation strategies", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
-    sustainability_12= st.radio("39.All risks are managed appropriately in line with the risk management framework.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
+    sustainability_12= st.radio("39.All risks are managed litGovernanceAPIropriately in line with the risk management framework.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     sustainability_13= st.radio("40.The organisation acts in a socially responsible manner and delivers on its CSR (Community Social Responsibility) plan.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     sustainability_14= st.radio("41.The organisation operates in an environmentally sustainable manner and reports on its environmental impact.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     comformance_1= st.radio("42.Directors understand the contents of the organisation’s incorporation and founding documents (organisation constitution or memorandum of incorporation or other such documents).", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
-    comformance_2= st.radio("43.The appointed directors have been duly registered as directors of the organisation with the relevant companies' commission.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
+    comformance_2= st.radio("43.The litGovernanceAPIointed directors have been duly registered as directors of the organisation with the relevant companies' commission.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     comformance_3= st.radio("44.Each board director maintains an up-to-date conflict of interest register.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     comformance_4= st.radio("45.The organisation’s directors’ and officers’ liability insurance is current and sufficient.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
-    comformance_5= st.radio("46.There is a regular policy review process that enables the board to recieves, review and approves both new and updated organisation policies on a regular basis.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
+    comformance_5= st.radio("46.There is a regular policy review process that enables the board to recieves, review and litGovernanceAPIroves both new and updated organisation policies on a regular basis.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     comformance_6= st.radio("47.The board, and each individual director, understand the financial model, activities and performance of the organisation.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     comformance_7= st.radio("48.The monthly financial measures that are tracked are up-to-date and actively monitored.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     comformance_8= st.radio("49.The financial report includes an income statement, balance sheet, cash flow forecast and financial ratios.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
@@ -155,15 +155,15 @@ def main():
         with open("responses.json", "w") as json_file:
             json.dump(response_json, json_file)
 
-        url = "your_api_endpoint" 
-        headers = {"Content-Type": "application/json"}
+        url = "http://localhost:5050/responses" 
+        headers = {"Content-Type": "litGovernanceAPIlication/json"}
         response = requests.post(url, data=json.dumps(responses), headers=headers)
 
         # Display a success message
         if response.status_code == 200:
             st.success("Data submitted successfully!")
         else:
-            st.error("Error submitting data. Please try again.")
+            st.error(f"Error submitting data: {response.text}")
 
 if __name__ == "__main__":
     main()

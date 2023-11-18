@@ -1,6 +1,6 @@
 import json
 
-class Responses(object):
+class RequestDeserializer(object):
 
     def __init__(self, jsonResponse):
         self.__dict__ = json.loads(jsonResponse)
