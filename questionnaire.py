@@ -67,7 +67,7 @@ def main():
     comformance_12= st.radio("52.An objective and regular operational assessment is actively used to monitor and evaluate organisation performance and focus ongoing improvement activity within the organisation.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     comformance_13= st.radio("54.An objective and regular governance assessment or evaluation is actively used by the board to monitor its own performance and cultivate a culture of continuous improvement of the board.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
     comformance_14= st.radio("55.Directors regularly attend director training and continuous professional development, and demonstrate their commitment to continuous learning.", ["Fully in place","Largely in Place", "Some Elements", "Minimal", "Non-Existent"])
-    t_n_c = st.checkbox("Do you agree to the T&Cs")
+    t_n_c = st.checkbox("Do you agree to the Terms & Conditions")
 
     # add purpose to reponse dict
     
