@@ -1,12 +1,6 @@
 # Information to insert in our Database Tables
 import sqlite3
 
-# Connect to database or create it if file is not there
-connect = sqlite3.connect('company.db')
-
-# Execute SQL statements and fetch results from SQL queries
-cursor = connect.cursor()
-
 # Data for Purpose
 purpose_data = [
     (1, "There is an up-to-date board charter in place appropriate to the life-stage of the organisation and its current structure."),
@@ -25,7 +19,6 @@ purpose_data = [
     (14, "The board committees (where appropriate) have an agreed work plan for the year and are making good progress against that plan"),
 ]
 
-
 # Data for Performance
 performance_data = [
     (1, "The chairman and managing director meet before every board meeting, and this engagement delivers value to the board's focus and preparation, as well as enhancing the relationship between the board and management."),
@@ -43,8 +36,6 @@ performance_data = [
     (13, "All directors of the board are prompt at reviewing circulated minutes and providing feedback, ideally within two working days."),
     (14, "Directors are rotated every three years or as per the board charter"),
 ]
-
-
 
 # Insert data into Sustainability Table
 sustainability_data = [
@@ -82,15 +73,105 @@ conformance_data = [
     (14, "Directors regularly attend director training and continuous professional development, and demonstrate their commitment to continuous learning."),
 ]
 
-# Insert data into Purpose Table
-cursor.executemany('INSERT INTO Purpose (purpose_id, purpose_question) VALUES (?, ?)', purpose_data)
-# Insert data into Performance Table
-cursor.executemany('INSERT INTO Performance (performance_id, performance_question) VALUES (?, ?)', performance_data)
-# Insert data into Sustainability Table
-cursor.executemany('INSERT INTO Sustainability (sustainability_id, sustainability_question) VALUES (?, ?)', sustainability_data)
-# Insert data into Conformance Table
-cursor.executemany('INSERT INTO Conformance (conformance_id, conformance_question) VALUES (?, ?)', conformance_data)
+
+def insertPurposeQuestions(database):
+    # Connect to database or create it if file is not there
+    connect = sqlite3.connect(database)
+    # Execute SQL statements and fetch results from SQL queries
+    cursor = connect.cursor()
+    
+    cursor.executemany('INSERT INTO Purpose (purpose_id, purpose_question) VALUES (?, ?)', purpose_data)
+    
+    connect.commit()
+    connect.close()
+    
+    
+def insertPerformanceQuestions(database):
+    # Connect to database or create it if file is not there
+    connect = sqlite3.connect(database)
+    # Execute SQL statements and fetch results from SQL queries
+    cursor = connect.cursor()
+    
+    cursor.executemany('INSERT INTO Performance (performance_id, performance_question) VALUES (?, ?)', performance_data)
+    
+    connect.commit()
+    connect.close()
+    
+    
+def insertSustainabilityQuestions(database):
+    # Connect to database or create it if file is not there
+    connect = sqlite3.connect(database)
+    # Execute SQL statements and fetch results from SQL queries
+    cursor = connect.cursor()
+    
+    cursor.executemany('INSERT INTO Sustainability (sustainability_id, sustainability_question) VALUES (?, ?)', sustainability_data)
+    
+    connect.commit()
+    connect.close()
+    
+    
+def insertConformanceQuestions(database):
+    # Connect to database or create it if file is not there
+    connect = sqlite3.connect(database)
+    # Execute SQL statements and fetch results from SQL queries
+    cursor = connect.cursor()
+    
+    cursor.executemany('INSERT INTO Conformance (conformance_id, conformance_question) VALUES (?, ?)', conformance_data)
+    
+    connect.commit()
+    connect.close()
 
 
-connect.commit()
-connect.close()
+def allQuestionsGenerated(database):
+    insertPurposeQuestions(database)
+    insertSustainabilityQuestions(database)
+    insertPerformanceQuestions(database)
+    insertConformanceQuestions(database)
+    
+    print('Questions are now ready')
+    
+
+# Add All Responses from the user
+def addResponses(database, data):
+    # Connect to database or create it if file is not there
+    connect = sqlite3.connect(database)
+    # Execute SQL statements and fetch results from SQL queries
+    cursor = connect.cursor()
+    
+    directorID = getDirectorEmail()
+
+    
+
+    cursor.executemany('INSERT INTO Responses (response_id, directors_id, question_id, table_name ,response_value ) VALUES (?,?,?,?,?)', (2,directorID,3,'Sustainability', 2))
+    connect.commit()
+    connect.close()
+
+
+def getDirectorEmail(email):
+    # Connect to database or create it if file is not there
+    connect = sqlite3.connect('company.db')
+    # Execute SQL statements and fetch results from SQL queries
+    cursor = connect.cursor()
+    
+    email = email['email']
+    
+    res = cursor.execute(f"SELECT director_id FROM CompanyName WHERE director_email == 'nick@gmail.com' " )
+    
+    return res.fetchone()
+
+    
+def getAnswers(answers):
+    
+
+# Connect to database or create it if file is not there
+# connect = sqlite3.connect('company.db')
+# # Execute SQL statements and fetch results from SQL queries
+# cursor = connect.cursor()
+
+# res = cursor.execute('SELECT * FROM CompanyName WHERE director_email == ' + email )
+
+# connect.close()
+
+
+
+
