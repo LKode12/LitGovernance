@@ -138,40 +138,121 @@ def addResponses(database, data):
     # Execute SQL statements and fetch results from SQL queries
     cursor = connect.cursor()
     
-    directorID = getDirectorEmail()
-
+    directorID = getDirectorEmail(data)
+    questionnaire_response = getAnswers(data)
     
+    for item in questionnaire_response:
+        for key, value in item.items():
+            information = key.split('_')
+            answer = value
+            
 
-    cursor.executemany('INSERT INTO Responses (response_id, directors_id, question_id, table_name ,response_value ) VALUES (?,?,?,?,?)', (2,directorID,3,'Sustainability', 2))
+            cursor.execute('INSERT INTO Responses ( directors_id, question_id, table_name ,response_value ) VALUES (?,?,?,?)', (directorID, information[1],information[0], answer))
     connect.commit()
     connect.close()
 
 
-def getDirectorEmail(email):
+def getDirectorEmail(data):
     # Connect to database or create it if file is not there
     connect = sqlite3.connect('company.db')
     # Execute SQL statements and fetch results from SQL queries
     cursor = connect.cursor()
     
-    email = email['email']
+    email = data['mail']
     
     res = cursor.execute(f"SELECT director_id FROM CompanyName WHERE director_email == 'nick@gmail.com' " )
     
     return res.fetchone()
 
     
-def getAnswers(answers):
-    
-
-# Connect to database or create it if file is not there
-# connect = sqlite3.connect('company.db')
-# # Execute SQL statements and fetch results from SQL queries
-# cursor = connect.cursor()
-
-# res = cursor.execute('SELECT * FROM CompanyName WHERE director_email == ' + email )
-
-# connect.close()
+def getAnswers(data):
+    return data['responses']
 
 
 
 
+def get_performance_response_count(database):
+    # Connect to the database
+    connect = sqlite3.connect(database)
+    cursor = connect.cursor()
+
+    # Execute the SQL query to get the count of each response_value
+    cursor.execute('''
+        SELECT response_value, COUNT(*) AS count
+        FROM Responses
+        WHERE table_name = 'Performance'
+        GROUP BY response_value
+    ''')
+
+    # Fetch the result
+    result = cursor.fetchall()
+
+    # Close the connection
+    connect.close()
+
+    return result
+
+
+def get_sustainability_response_count(database):
+    # Connect to the database
+    connect = sqlite3.connect(database)
+    cursor = connect.cursor()
+
+    # Execute the SQL query to get the count of each response_value for Sustainability
+    cursor.execute('''
+        SELECT response_value, COUNT(*) AS count
+        FROM Responses
+        WHERE table_name = 'Sustainability'
+        GROUP BY response_value
+    ''')
+
+    # Fetch the result
+    result = cursor.fetchall()
+
+    # Close the connection
+    connect.close()
+
+    return result
+
+def get_purpose_response_count(database):
+    # Connect to the database
+    connect = sqlite3.connect(database)
+    cursor = connect.cursor()
+
+    # Execute the SQL query to get the count of each response_value for Purpose
+    cursor.execute('''
+        SELECT response_value, COUNT(*) AS count
+        FROM Responses
+        WHERE table_name = 'Purpose'
+        GROUP BY response_value
+    ''')
+
+    # Fetch the result
+    result = cursor.fetchall()
+
+    # Close the connection
+    connect.close()
+
+    return result
+
+
+def get_conformance_response_count(database):
+    # Connect to the database
+    connect = sqlite3.connect(database)
+    cursor = connect.cursor()
+
+    # Execute the SQL query to get the count of each response_value for Conformance
+    cursor.execute('''
+        SELECT response_value, COUNT(*) AS count
+        FROM Responses
+        WHERE table_name = 'Conformance'
+        GROUP BY response_value
+    ''')
+
+    # Fetch the result
+    result = cursor.fetchall()
+
+    # Close the connection
+    connect.close()
+
+    return result
