@@ -4,7 +4,7 @@ from email.message import EmailMessage
 import smtplib
 
 
-api_endpoint = 'http://localhost:< 6000 >/assessment'
+api_endpoint = 'http://localhost:8501/questionnaire'
 
 def generate_questionnaire_link(email):
     response = requests.post(api_endpoint, json={'email': email})
@@ -33,7 +33,6 @@ def main():
     st.title("SIRDAR")
     st.header("Questionnaire Link Generator")
 
-    # Initialize or retrieve emails from session state
     emails = st.session_state.get("emails", [""])
 
     for i, email in enumerate(emails):
@@ -52,9 +51,9 @@ def main():
             print(response)
 
             if response.status_code == 200:
-                access_link = response.json().get("access_link")
-                if access_link:
-                    st.success(f"Access Link: {access_link}")
+                access_link = response.json().get("questionnaire_link")
+                if questionnaire_link:
+                    st.success(f"Access Link: {questionnaire_link}")
                 else:
                     st.error("Failed to generate access link. Please try again.")
             else:
