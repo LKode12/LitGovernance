@@ -141,7 +141,11 @@ def main():
     responses["comformance_12"] = comformance_12
     responses["comformance_13"] = comformance_13
     responses["comformance_14"] = comformance_14
-
+    
+    if t_n_c:
+        response["T_&_Cs"] = True
+    else:
+        response["T_&_Cs"] = False
     response_json={
         "company":company_name,
         "email":email,
