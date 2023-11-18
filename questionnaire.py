@@ -147,6 +147,7 @@ def main():
         "email":email,
         "reponse":responses
     }
+    
     # st.write(response_json)
     
     # Add a submit button
@@ -155,7 +156,7 @@ def main():
         with open("responses.json", "w") as json_file:
             json.dump(response_json, json_file)
 
-        url = "your_api_endpoint" 
+        url = "http://localhost:6000/assessment" 
         headers = {"Content-Type": "application/json"}
         response = requests.post(url, data=json.dumps(responses), headers=headers)
 
