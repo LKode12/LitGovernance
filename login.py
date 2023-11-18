@@ -1,8 +1,5 @@
 import streamlit as st
-import sqlite3
-from flask_bcrypt import Bcrypt  
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-
+import json
 import streamlit as st
 import requests
 
@@ -17,8 +14,10 @@ def login_page():
     if st.button("Login as Client"):
         # Call the client authentication endpoint
         payload = {"company_name": company_name, "email": email}
-        response = requests.post("http://your-api-url/authenticate/director", json=payload)
-
+        with open("worker.json", "w") as json_file:
+            json.dump(payload, json_file)
+        headers = {"Content-Type": "application/json"}
+        response = requests.post("http://20.20.16.145:5050/authenticate_director",data=json.dumps(payload),headers=headers)
         if response.status_code == 200:
             # Assuming the API returns a success status code
             st.success("Logged in as client")
@@ -33,14 +32,17 @@ def login_page():
         password = st.text_input("Password", type="password", key="company_password")
 
         # Call the sidar personnel authentication endpoint
-        payload = {"email": email}
-        response = requests.post("http://your-api-url/authenticate/sidar", json=payload)
-
-        if response.status_code == 200:
-            # Assuming the API returns a success status code
-            st.success("Logged in as company personnel")
-        else:
-            st.error("Company personnel authentication failed. Please check your credentials.")
+        if st.button("Submit"):
+            payload = {"email": email}
+            with open("personnel.json", "w") as json_file:
+                json.dump(payload, json_file)
+            headers = {"Content-Type": "application/json"}
+            response = requests.post("http://20.20.16.145:5050/authenticate_director",data=json.dumps(payload),headers=headers) 
+            if response.status_code == 200:
+                # Assuming the API returns a success status code
+                st.success("Logged in as company personnel")
+            else:
+                st.error("Company personnel authentication failed. Please check your credentials.")
 
 
 
@@ -61,13 +63,13 @@ def company_dashboard():
     st.subheader("Company Dashboard")
     # Display all current clients and their data, including deadlines
 
-# Example usage
+# # Example usage
 if __name__ == '__main__':
     login_page()
-    if current_user.is_authenticated:
-        if current_user.role == "Company Personnel":
-            company_dashboard()
-            add_client_page()
-        elif current_user.role == "Client":
-            client_dashboard()
-            questionnaire_page()
+#     if current_user.is_authenticated:
+#         if current_user.role == "Company Personnel":
+#             company_dashboard()
+#             add_client_page()
+#         elif current_user.role == "Client":
+#             client_dashboard()
+#             questionnaire_page()

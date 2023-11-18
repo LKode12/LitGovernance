@@ -143,9 +143,9 @@ def main():
     responses["comformance_14"] = comformance_14
     
     if t_n_c:
-        response["T_&_Cs"] = True
+        responses["T_&_Cs"] = True
     else:
-        response["T_&_Cs"] = False
+        responses["T_&_Cs"] = False
     response_json={
         "company":company_name,
         "email":email,
@@ -160,9 +160,9 @@ def main():
         with open("responses.json", "w") as json_file:
             json.dump(response_json, json_file)
 
-        url = "http://localhost:6000/assessment" 
+        url = "http://20.20.16.145:5050/responses" 
         headers = {"Content-Type": "application/json"}
-        response = requests.post(url, data=json.dumps(responses), headers=headers)
+        response = requests.post(url, data=json.dumps(response_json), headers=headers)
 
         # Display a success message
         if response.status_code == 200:
