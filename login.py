@@ -26,18 +26,18 @@ def login_page():
 
     # For company personnel, provide a small button at the bottom
     st.markdown("---")  # Add a separator line
-    st.text("Are you a company personnel?")
-    if st.button("Login as Company Personnel"):
+    personel = st.radio("Are you a company personnel?",["No","Yes"])
+    if personel == "Yes":
         email = st.text_input("Email (@sidar.com)", key="company_email")
         password = st.text_input("Password", type="password", key="company_password")
-
-        # Call the sidar personnel authentication endpoint
-        if st.button("Submit"):
+        if st.button("Login as Company Personnel"):
+            # Call the sidar personnel authentication endpoint
             payload = {"email": email}
             with open("personnel.json", "w") as json_file:
                 json.dump(payload, json_file)
+
             headers = {"Content-Type": "application/json"}
-            response = requests.post("http://20.20.16.145:5050/authenticate_director",data=json.dumps(payload),headers=headers) 
+            response = requests.post("http://20.20.16.145:5050/authenticate_director",data=json.dumps(payload),headers=headers)
             if response.status_code == 200:
                 # Assuming the API returns a success status code
                 st.success("Logged in as company personnel")
