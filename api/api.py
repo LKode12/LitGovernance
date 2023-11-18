@@ -2,28 +2,36 @@ import json
 from flask import Flask
 from flask import request
 from flask import jsonify
-from controllers.responses import RequestDeserializer
+from flask import abort
+from database import createDB as cb
+from database import insertDb as ib
 
-litGovernanceAPI = Flask(__name__)
+app = Flask(__name__)
 
 # The request body will have the company key and director Id
 # This will be used to update the relevant table
 
-@litGovernanceAPI.route("/responses", methods=['POST'])
+@app.route("/responses", methods=['POST'])
 def addDataFromQuestionnaire():
 
+    resp = deserializeJson(request)
+
     # This should include a header in the url that confirms access to this endpoint
-    if request.method == 'POST':
-        
-        responses = deserializeJson()
-        addDataFromQuestionnaire(responses)
+    if request.method == 'POST' and confirmDirectors:
 
-        return jsonify('{"message":"request was successful"}')
+        if not resp.get("terms"):
+            return "You need to agree to terms and conditions"
+
+        addDataToDatabase(resp)
+
+        return "Data submitted successfully!"
     
-    return denyEndPointAccess()
+    abort(401)
+    return "Not Authorised"
 
 
-@litGovernanceAPI.route("/dashboard", methods=['GET'])
+
+@app.route("/dashboard", methods=['GET'])
 def getDataForDashBoard():
 
     """
@@ -44,16 +52,34 @@ def getDataForDashBoard():
             }
     
         return jsonify(jsonForDashboard)
+    abort(401)
+    return "Not Authorised"
+
+@app.route("/authenticate_sirdar", methods=['GET'])
+def authenticateSirDarEmployee():
+
+    resp = deserializeJson(request)
+
+    if resp.get("email") and request.method == "GET":
+        return "Successfully logged in"
     
-    return denyEndPointAccess()
+    abort(401)
+    return "Not Authorised"
+
+@app.route("/authenticate_director", methods=['GET'])
+def authenticateDirector():
+
+    resp = deserializeJson(request)
+
+    if resp.get("email") and request.method == "GET":
+        return "Successfully logged in"
+    
+    abort(401)
+    return "Not Authorised"
 
 
-def denyEndPointAccess():
 
-    return jsonify('"message" : "You do not have access to this api endpoint"')
-
-
-def addDataToDatabase():
+def addDataToDatabase(desirializedJson):
     
     # This should call method from database that creates the data
     # if table exists in the database and request header value is valid: add data
@@ -69,13 +95,18 @@ def getDashBoardDataFromDB():
     # If request header value is invalid: inform accordingly
     pass
 
+def confirmDirectors(requestObject):
 
-def deserializeJson():
+    # Get directors from DB
+    if requestObject.get("email"):
+        return True
+    return False
 
-    # This method desirializes all json from requests
-    requestBodyJson = jsonify(json.dumps(request.get_json()))
-    responses = RequestDeserializer(requestBodyJson)
 
+def deserializeJson(req):
+
+    # Deserialize json in request
+    responses = req.json
     return responses
 
 
@@ -88,4 +119,4 @@ def checkRequestHeaderValue(requestHeaderValue):
 
 
 if __name__ == "__main__":
-    litGovernanceAPI.run(debug=True)
+    app.run(debug=True, port=5050)
