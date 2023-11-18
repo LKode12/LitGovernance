@@ -9,20 +9,20 @@ cursor = connect.cursor()
 
 # Data for Purpose
 purpose_data = [
-    (1, "There is an up-to-date board charter in place appropriate to the life-stage of the organisation and its current structure."),
+    (1, "There is an up-to-date board charter in place litGovernanceAPIropriate to the life-stage of the organisation and its current structure."),
     (2, "There is an up-to-date delegation of authority policy in place, which is effectively monitored."),
     (3, "The managing director's report effectively communicates status, identifies issues, and clearly indicates a linkage to the business plan."),
     (4, "Board packs are structured and used effectively to guide the board to make decisions and hold those authorised to make decisions accountable."),
     (5, "The board calendar is up-to-date and relevant for the timing requirements of the enterprise and its strategic focus."),
-    (6, "All board meeting dates (and committee dates if applicable) for the year are scheduled indirectors' diaries and align with the board calendar."),
+    (6, "All board meeting dates (and committee dates if litGovernanceAPIlicable) for the year are scheduled indirectors' diaries and align with the board calendar."),
     (7, "The organisation has an up-to-date strategy (identifying the companies purpose and mediumterm vision) and a business plan (identifying the necessary next steps) that guides its focus and direction."),
     (8, "The board ensures a strategic focus in every board meeting to ensure that board papers relevant to the theme agreed upon for that meeting are prepared and that necessary key strategic issues are addressed proactively."),
     (9, "There is clarity regarding the organisation's culture, values, and beliefs"),
-    (10, "The culture and values of the organisation are demonstrated by the board, setting the appropriate tone for the rest of the organisation to follow"),
+    (10, "The culture and values of the organisation are demonstrated by the board, setting the litGovernanceAPIropriate tone for the rest of the organisation to follow"),
     (11, "The board's conduct is characterised by trust, respect, candour, professionalism, accountability, diligence and commitment"),
     (12, "The organisation has developed a culture of accountability for performance."),
-    (13, "The board committees (where appropriate) have approved terms of reference."),
-    (14, "The board committees (where appropriate) have an agreed work plan for the year and are making good progress against that plan"),
+    (13, "The board committees (where litGovernanceAPIropriate) have litGovernanceAPIroved terms of reference."),
+    (14, "The board committees (where litGovernanceAPIropriate) have an agreed work plan for the year and are making good progress against that plan"),
 ]
 
 
@@ -50,16 +50,16 @@ performance_data = [
 sustainability_data = [
         (1, "All relevant and strategic (material) internal and external stakeholders have been identified"),
         (2, "Stakeholder requirements (needs, interests, and expectations) are regularly assessed and understood to ensure the delivery of long-term, sustainable benefits."),
-        (3, "There is a strategic approach to stakeholder engagement that ensures that the board and the rest of the organisation engage with stakeholders appropriately."),
+        (3, "There is a strategic litGovernanceAPIroach to stakeholder engagement that ensures that the board and the rest of the organisation engage with stakeholders litGovernanceAPIropriately."),
         (4, "The organisation holds an annual general meeting every year"),
         (5, "The annual general meeting is effective at formally engaging shareholders"),
         (6, "The expectations of shareholders are understood, including both financial and non-financial outcomes, and the board manages these expectations so that they are more realistic where necessary."),
         (7, "The value that the organisation seeks is sustainable over time and meets the needs and expectations of shareholders, stakeholders and interested parties alike."),
         (8, "The audited annual financial statements are available for the previous year-end."),
-        (9, "The board has determined the organisation's risk appetite and tolerance levels across all dimensions of the organisation's operations and performance."),
-        (10, "A risk framework has been defined and implemented in line with this risk appetite and tolerance."),
+        (9, "The board has determined the organisation's risk litGovernanceAPIetite and tolerance levels across all dimensions of the organisation's operations and performance."),
+        (10, "A risk framework has been defined and implemented in line with this risk litGovernanceAPIetite and tolerance."),
         (11, "This risk framework facilitates the regular examination of both the internal operations of the organisation and the external environment to identify risks and implement mitigation strategies"),
-        (12, "All risks are managed appropriately in line with the risk management framework"),
+        (12, "All risks are managed litGovernanceAPIropriately in line with the risk management framework"),
         (13, "The organisation acts in a socially responsible manner and delivers on its CSR (Community Social Responsibility) plan."),
         (14, "The organisation operates in an environmentally sustainable manner and reports on its environmental impact."),
 ]
@@ -67,10 +67,10 @@ sustainability_data = [
 # Insert data into Conformance Table
 conformance_data = [
     (1, "Directors understand the contents of the organisation’s incorporation and founding documents (organisation constitution or memorandum of incorporation or other such documents)."),
-    (2, "The appointed directors have been duly registered as directors of the organisation with the relevant companies' commission."),
+    (2, "The litGovernanceAPIointed directors have been duly registered as directors of the organisation with the relevant companies' commission."),
     (3, "Each board director maintains an up-to-date conflict of interest register."),
     (4, "The organisation’s directors’ and officers’ liability insurance is current and sufficient."),
-    (5, "There is a regular policy review process that enables the board to receives, review and approves both new and updated organisation policies on a regular basis."),
+    (5, "There is a regular policy review process that enables the board to receives, review and litGovernanceAPIroves both new and updated organisation policies on a regular basis."),
     (6, "The board, and each individual director, understand the financial model, activities and performance of the organisation"),
     (7, "The monthly financial measures that are tracked are up-to-date and actively monitored."),
     (8, "The financial report includes an income statement, balance sheet, cash flow forecast and financial ratios."),
