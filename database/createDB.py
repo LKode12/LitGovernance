@@ -22,7 +22,6 @@ cursor.execute('''
     )
 ''')
 
-
 # Create Sustainability Table
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS Sustainability (
@@ -31,7 +30,6 @@ cursor.execute('''
     )
 ''')
 
-
 # Create Conformance Table
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS Conformance (
@@ -39,3 +37,27 @@ cursor.execute('''
         conformance_question TEXT
     )
 ''')
+
+# Create Directors Table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Directors (
+        director_id INTEGER PRIMARY KEY,
+        director_email TEXT
+    )
+''')
+
+
+# Create Responses Table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Responses (
+    response_id SERIAL PRIMARY KEY,
+    participant_id INT,
+    question_id INT,
+    responses_value INT CHECK (response_value BETWEEN 0 AND 4),
+    table_name VARCHAR(50), -- To store the name of the table (Purpose, Sustainability, etc.)
+    FOREIGN KEY (directors_id) REFERENCES Directors(directors_id)
+);
+''')
+
+connect.commit()
+connect.close()
