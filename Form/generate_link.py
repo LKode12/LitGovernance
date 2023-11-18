@@ -24,8 +24,8 @@ def send_email(email, questionnaire_link):
     
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    smtp_username = 'lehlogonolomaw@gmail.com'
-    smtp_password = 'add google pass'
+    smtp_username = 'mukendigloria5@gmail.com'
+    smtp_password = 'stbd tkxl remh hxrf'
     msg = EmailMessage()
     msg.set_content(f"Click the following link to access our app and login with your company details: {questionnaire_link}")
     msg['Subject'] = 'Questionnaire Link'
